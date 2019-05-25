@@ -1,0 +1,21 @@
+<mat-toolbar class="header" color="primary">
+  <button mat-icon-button
+          [matMenuTriggerFor]="menu">
+    <mat-icon>format_color_fill</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button
+        *ngFor="let theme of themes"
+        mat-menu-item
+        (click)="themeSelected.emit(theme)"
+    >
+      <span [ngClass]="theme.class" style="background-color: white">
+        <mat-icon color="accent" >format_color_fill</mat-icon>
+      </span>
+      <span>{{theme.name | titlecase}}</span>
+    </button>
+  </mat-menu>
+  <span color="primary">
+    Courses App
+  </span>
+</mat-toolbar>

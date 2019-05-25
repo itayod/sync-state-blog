@@ -1,0 +1,10 @@
+.grid-container {
+  margin: 20px;
+  .courses-container {
+    display: flex;
+    justify-content: center;
+    mat-tab-group {
+      width: 50%;
+    }
+  }
+}

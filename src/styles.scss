@@ -1,0 +1,51 @@
+@import '~@angular/material/theming';
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.purple-theme {
+  $purple-primary: mat-palette($mat-purple);
+  $purple-accent:  mat-palette($mat-deep-purple, A200, A100, A400);
+
+  // The warn palette is optional (defaults to red).
+  $purple-warn:    mat-palette($mat-red);
+
+  // Create the theme object (a Sass map containing all of the palettes).
+  $purple-theme: mat-light-theme($purple-primary, $purple-accent, $purple-warn);
+
+  // Include theme styles for core and each component used in your app.
+  // Alternatively, you can import and @include the theme mixins for each component
+  // that you are using.
+  @include angular-material-theme($purple-theme);
+}
+
+.pink-theme {
+  $pink-primary: mat-palette($mat-pink);
+  $pink-accent:  mat-palette($mat-pink, A200, A100, A400);
+
+  // The warn palette is optional (defaults to red).
+  $pink-warn:    mat-palette($mat-red);
+
+  // Create the theme object (a Sass map containing all of the palettes).
+  $pink-theme: mat-light-theme($pink-primary, $pink-accent, $pink-warn);
+
+  // Include theme styles for core and each component used in your app.
+  // Alternatively, you can import and @include the theme mixins for each component
+  // that you are using.
+  @include angular-material-theme($pink-theme);
+}
+
+.dark-theme {
+  // Define an alternate dark theme.
+  $dark-primary: mat-palette($mat-pink);
+  $dark-accent:  mat-palette($mat-deep-purple, 900, A100, A400);
+  $dark-warn:    mat-palette($mat-deep-orange);
+  $dark-theme:   mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
+  background: map-get($mat-grey, 900);
+  color: white;
+
+  @include angular-material-theme($dark-theme);
+
+}
