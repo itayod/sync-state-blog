@@ -1,0 +1,20 @@
+.course-card {
+  margin: 50px 30px;
+  max-height: 400px;
+  max-width: 500px;
+  mat-card-header {
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .favorite-icon {
+    cursor: pointer;
+  }
+  mat-card-content {
+    height: 80px;
+  }
+}
+
+.course-actions {
+  text-align: center;
+}

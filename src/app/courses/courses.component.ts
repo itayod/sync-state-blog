@@ -1,33 +1,35 @@
-import { Component } from '@angular/core';
-import { map } from 'rxjs/operators';
-import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
+import {Component, OnInit} from '@angular/core';
+import {Store} from '@ngrx/store';
+import {Observable} from 'rxjs';
+import {Course, ViewModes} from './courses.model';
+import * as fromCourses from './reducers/courses.reducer';
+import * as fromActions from './actions/courses.actions';
 
 @Component({
   selector: 'app-courses',
   templateUrl: './courses.component.html',
   styleUrls: ['./courses.component.scss']
 })
-export class CoursesComponent {
-  /** Based on the screen size, switch from standard to one column per row */
-  cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
-    map(({ matches }) => {
-      if (matches) {
-        return [
-          { title: 'Card 1', cols: 1, rows: 1 },
-          { title: 'Card 2', cols: 1, rows: 1 },
-          { title: 'Card 3', cols: 1, rows: 1 },
-          { title: 'Card 4', cols: 1, rows: 1 }
-        ];
-      }
+export class CoursesComponent implements OnInit {
 
-      return [
-        { title: 'Card 1', cols: 2, rows: 1 },
-        { title: 'Card 2', cols: 1, rows: 1 },
-        { title: 'Card 3', cols: 1, rows: 2 },
-        { title: 'Card 4', cols: 1, rows: 1 }
-      ];
-    })
-  );
+  public viewModes = ViewModes;
+  public beginnerCourses$: Observable<Course[]>;
+  public advancedCourses$: Observable<Course[]>;
+  public viewMode$: Observable<ViewModes>;
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(private store: Store<fromCourses.State>) {}
+
+  public ngOnInit(): void {
+    this.beginnerCourses$ = this.store.select(fromCourses.selectBeginnerCourses);
+    this.advancedCourses$ = this.store.select(fromCourses.selectAdvancedCourses);
+    this.viewMode$ = this.store.select(fromCourses.selectViewMode);
+  }
+
+  public toggleFavourite(course: Course) {
+    this.store.dispatch(new fromActions.ToggleFavourite(course));
+  }
+
+  public switchViewMode(viewMode: ViewModes) {
+    this.store.dispatch(new fromActions.SwitchViewMode(viewMode));
+  }
 }

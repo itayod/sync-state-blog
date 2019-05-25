@@ -40,7 +40,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .dark-theme {
   // Define an alternate dark theme.
   $dark-primary: mat-palette($mat-pink);
-  $dark-accent:  mat-palette($mat-deep-purple, 900, A100, A400);
+  $dark-accent:  mat-palette($mat-deep-purple, 700, A100, A400);
   $dark-warn:    mat-palette($mat-deep-orange);
   $dark-theme:   mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
   background: map-get($mat-grey, 900);

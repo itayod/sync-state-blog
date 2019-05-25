@@ -1,9 +1,20 @@
 <div class="grid-container">
-  <h1 class="mat-h1">COURSES</h1>
+  <span class="header">
+    <span>COURSES</span>
+    |
+    <div>
+      <mat-icon (click)="switchViewMode(viewModes.SingleCol)">view_stream</mat-icon>
+      <mat-icon (click)="switchViewMode(viewModes.MultiCol)">view_module</mat-icon>
+    </div>
+  </span>
   <div class="courses-container">
     <mat-tab-group mat-align-tabs="center">
-      <mat-tab label="Basic Courses"> </mat-tab>
-      <mat-tab label="Advance Courses"></mat-tab>
+      <mat-tab label="Basic Courses">
+        <app-courses-list [viewModes]="viewMode$ | async" [courses]="beginnerCourses$ | async" (toggleFavourite)="toggleFavourite($event)"></app-courses-list>
+      </mat-tab>
+      <mat-tab label="Advance Courses">
+        <app-courses-list [viewModes]="viewMode$ | async" [courses]="advancedCourses$ | async"></app-courses-list>
+      </mat-tab>
     </mat-tab-group>
   </div>
 </div>

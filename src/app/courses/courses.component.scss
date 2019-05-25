@@ -1,10 +1,21 @@
 .grid-container {
-  margin: 20px;
+  padding: 20px;
+  .header {
+    display: flex;
+    justify-content: space-between;
+    width: 200px;
+    font-size: 25px;
+    mat-icon {
+      font-size: 33px;
+      width: 35px;
+      cursor: pointer;
+    }
+  }
   .courses-container {
     display: flex;
     justify-content: center;
     mat-tab-group {
-      width: 50%;
+      width: 60%;
     }
   }
 }

@@ -136,5 +136,8 @@
       }
     }
   },
-  "defaultProject": "sync-state-blog"
+  "defaultProject": "sync-state-blog",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }
