@@ -6,7 +6,7 @@ export function storageMetaReducer<S, A extends Action = Action>(saveKeys: strin
   let onInit = true; // after load/refresh…
   return function(reducer: ActionReducer<S, A>) {
     return function(state: S, action: A): S {
-      // get touthe nextState.
+      // get to the nextState.
       const nextState = reducer(state, action);
       // init the application state.
       if (onInit) {
